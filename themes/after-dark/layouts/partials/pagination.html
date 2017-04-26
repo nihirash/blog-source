@@ -1,0 +1,11 @@
+<nav>
+  <p>
+    {{if .Paginator.HasPrev }}
+      <a href="{{ .Paginator.Prev.URL }}">&laquo; Туда</a> |
+    {{ end }}
+    <span>Страница {{ .Paginator.PageNumber }} из {{ .Paginator.TotalPages }}</span>
+    {{ if .Paginator.HasNext }}
+      | <a href="{{ .Paginator.Next.URL }}">Сюда &raquo;</a>
+    {{ end }}
+  </p>
+</nav>
