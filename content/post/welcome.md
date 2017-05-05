@@ -4,7 +4,7 @@ draft = false
 title = "Добро пожаловать!"
 author = "nihirash"
 tags = [ "slice of life" ]
-category = [ "Жизнь" ]
+categories = [ "Жизнь" ]
 +++
 
 Всем дня!
