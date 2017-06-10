@@ -20,6 +20,13 @@
     {{ if eq .Kind "home" }}
       {{ partial "site-verification.html" . }}
     {{ end }}
+<!-- Put this script tag to the <head> of your page -->
+<script type="text/javascript" src="//vk.com/js/api/openapi.js?145"></script>
+
+<script type="text/javascript">
+  VK.init({apiId: 6018122, onlyWidgets: true});
+</script>
+
     {{ template "_internal/google_analytics_async.html" . }}
     {{ if .RSSLink }}
       <link href="{{ .RSSLink }}" rel="alternate" type="application/rss+xml" title="{{ .Site.Title }}" />
