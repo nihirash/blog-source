@@ -1,0 +1,13 @@
+
+name = "Pinport"
+license = "MIT"
+licenselink = "https://github.com/yourname/yourtheme/blob/master/LICENSE.md"
+description = ""
+homepage = "http://nihirash.github.io/"
+tags = []
+features = []
+min_version = "0.20.5"
+
+[author]
+  name = ""
+  homepage = ""

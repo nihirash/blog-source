@@ -1,0 +1,21 @@
+<article class="main-article">
+    <div class="header-content">
+        <div class="post-title">
+            <h2><a href="{{ .URL }}" class="tlink title-link cl-effect-1">{{ .Title }}</a></h2>
+        </div>
+        <div class="post-info">
+            <span class="post-data">{{ .Date.Format "01.02.2006" }}</span>
+            {{ with .Params.categories }}
+                {{ delimit (apply (apply (sort .) "partial" "category-link.html" ".") "chomp" ".") "" "" }}
+            {{ end }}
+        </div>
+    </div>
+    <div class="post-content">
+        <div class="post-text">
+            <p>{{ .Summary }}</p>
+        </div>
+        <div class="button-next">
+            <a href="{{ .RelPermalink }}" class="tlink cl-effect-2">- Читать далее -</a>
+        </div>
+    </div>
+</article>

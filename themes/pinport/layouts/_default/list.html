@@ -1,0 +1,16 @@
+{{ partial "header.html" . }}
+
+<main class="main">
+    <section class="main-content">
+        {{ range (.Paginate (where .Data.Pages "Type" "post")).Pages }}
+        {{ partial "announce.html" . }}
+        {{ end }}
+        {{ partial "pagination.html" . }}
+
+        <a href="/" class="home-button cl-effect-2" title="">- На главную -</a>
+    </section>
+    <!--Blog sidebar options -->
+    {{ partial "sidebar.html" . }}
+</main>
+
+{{ partial "footer.html" . }}

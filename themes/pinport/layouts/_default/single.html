@@ -1,0 +1,60 @@
+{{ partial "header.html" . }}
+
+<main class="main page-article">
+    <section class="main-content">
+        <article class="main-article">
+            <div class="header-content">
+                <div class="post-title">
+                    <h2 class="article-title">{{ .Title }}</h2>
+                </div>
+                <div class="post-info">
+                    <span class="post-data">{{ .Date }}</span>
+                    {{ with .Params.categories }}
+                    {{ delimit (apply (apply (sort .) "partial" "category-link.html" ".") "chomp" ".") "" "" }}
+                    {{ end }}
+                    <span class="post-tags">Tags:</span>
+                    {{ with .Params.tags }}
+                    {{ range $name := . }}
+                    <a href="/tags/{{ $name | urlize }}" class="tlink tag-link d-tag" title="">{{ $name }}</a>
+                    {{ end }}
+
+                    {{ end }}
+                </div>
+
+                <div>
+                        </div>
+                </div>
+                <div class="post-content--article">
+                    {{ if and (isset .Params "toc") .Params.toc  }}
+                    <nav class="nav-article">
+                        <details>
+                            <summary>Содержание</summary>
+                        {{ .TableOfContents }}
+                        </details>
+                    </nav>
+                    {{ end }}
+
+                    <div class="post-text">
+                        {{ .Content }} <span class="effect-cursor">_</span>
+                        <p>&nbsp;</p>
+                    </div>
+        </article>
+
+        {{ range first 1 (where (where .Site.Pages ".Params.tags" "intersect" .Params.tags) "Permalink" "!=" .Permalink) }}
+        {{ $.Scratch.Set "has_related" true }}
+        {{ end }}
+
+        {{ if $.Scratch.Get "has_related" }}
+        <aside class="aside">
+            <h3 class="similar">Cхожие публикации:</h3>
+            <ul class="similar-wrapper">
+                {{ $num_to_show := .Site.Params.related_content_limit | default 7 }}
+                {{ range first $num_to_show (where (where .Site.Pages ".Params.tags" "intersect" .Params.tags) "Permalink" "!=" .Permalink) }}
+                <li><a href="{{ .RelPermalink }}" class="similar-article">{{ .Title }}</a></li>
+                {{ end }}
+        </aside>
+        {{ end }}
+        <a href="/" class="home-button cl-effect-2" title="">- На главную -</a>
+    </section>
+</main>
+{{ partial "footer.html" . }}

@@ -1,0 +1,36 @@
+<section class="sidebar">
+    <div class="widget widget-about">
+        <figure class="author-image">
+            <img src="/img/avatar.jpg" alt="Моя фотография">
+        </figure>
+        <h3 class="widget-title">- Alexandr Sharikhin -</h3>
+        <p>Nihirash</p>
+        <p>backend developer</p>
+        <span class="email"><p>anihirash@gmail.com</p></span>
+    </div>
+    <div class="widget tags-wrapper">
+        <h3 class="widget-title">- Tags -</h3>
+        <div class="widget-tags">
+            {{ with .Site.Taxonomies.tags }}
+                    {{ range $name, $taxonomy := . }}
+                    <a href="/tags/{{ $name | urlize }}" class="tlink tag-link d-tag" title="">{{ $name }}</a>
+                    {{ end }}
+                </ul>
+            </div>
+            {{ end }}
+        </div>
+    </div>
+
+    <div class="widget widget-categories">
+        <h3 class="widget-title">- Categories -</h3>
+        <ul class="cat-widget--item">
+            {{ with .Site.Taxonomies.categories }}
+                {{ range $name, $taxonomy := . }}
+                <li class="cat-item">
+                    <a href="/categories/{{ $name | urlize }}" class="tlink cl-effect-1">{{ $name }}</a>
+                </li>
+                {{ end }}
+            {{ end }}
+        </ul>
+    </div>
+</section>
